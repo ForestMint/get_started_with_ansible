@@ -17,9 +17,14 @@ vagrant up
 cd ..
 ```
 
-Install OpenSSH on all the servers == nodes == mamaged nodes
+On each machine (vagrant ssh)
+
 ```bash
-sudo apt install openssh-server
+sudo systemctl start ssh 
+```
+
+```bash
+sudo systemctl status ssh 
 ```
 
 No need to have OpenSSH installed on the workstation == control node (just SSH client is needed here, installed by default on any Linux system)
