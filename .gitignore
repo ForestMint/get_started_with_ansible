@@ -1,11 +1,11 @@
-control_node/*
-!control_node/Vagrantfile
+# Ignore everything
+*
 
-manages_node_1/*
-!manages_node_1/Vagrantfile
+# But not these files...
+!.gitignore
+!Vagrantfile
+!README.md
+!install_apache.yml
 
-manages_node_2/*
-!manages_node_2/Vagrantfile
-
-manages_node_3/*
-!manages_node_3/Vagrantfile
+# ...even if they are in subdirectories
+!*/
