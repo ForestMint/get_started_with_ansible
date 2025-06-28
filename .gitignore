@@ -1,0 +1,11 @@
+control_node/*
+!control_node/Vagrantfile
+
+manages_node_1/*
+!manages_node_1/Vagrantfile
+
+manages_node_2/*
+!manages_node_2/Vagrantfile
+
+manages_node_3/*
+!manages_node_3/Vagrantfile
