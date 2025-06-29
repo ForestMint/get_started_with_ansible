@@ -22,22 +22,19 @@ Start the machines
 cd managed_node_1
 vagrant up
 vagrant ssh
-sudo useradd -m p851962
-sudo passwd p851962
+(sudo useradd -m p851962) && (sudo passwd p851962)
 cd ..
 
 cd managed_node_2
 vagrant up
 vagrant ssh
-sudo useradd -m p851962
-sudo passwd p851962
+(sudo useradd -m p851962) && (sudo passwd p851962)
 cd ..
 
 cd managed_node_3
 vagrant up
 vagrant ssh
-sudo useradd -m p851962
-sudo passwd p851962
+(sudo useradd -m p851962) && (sudo passwd p851962)
 cd ..
 ```
 
