@@ -124,10 +124,6 @@ ping <managed-node-3-IP>
 
 
 
-
-
-
-
 copy the public key to each server you want to access to
 ```bash
 ssh-copy-id -i ~/.ssh/id_ed25519.pub <server-ip-address>
