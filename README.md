@@ -3,30 +3,40 @@
 
 
 
-Start the machines
+## 📦 Start the machines
+
+
+### Node 1
 
 ```bash
 cd managed_node_1
 vagrant up
 vagrant ssh
 (sudo useradd -m p851962) && (sudo passwd p851962)
-cd ..
+```
 
+### Node 2
+
+```bash
 cd managed_node_2
 vagrant up
 vagrant ssh
 (sudo useradd -m p851962) && (sudo passwd p851962)
-cd ..
+```
 
+### Node 3
+
+```bash
 cd managed_node_3
 vagrant up
 vagrant ssh
 (sudo useradd -m p851962) && (sudo passwd p851962)
-cd ..
 ```
+## 🔑 Set the SSH key
 
+### Run the following on the control node
 
-On the control node
+#### Creation of the key
 
 ```bash
 ssh-keygen -t ed25519 -C "jay default"
@@ -35,35 +45,18 @@ press Enter to leave the file field empty
 choose a strong passphrase to make the key much better
 
 
-find the IPs in the variable /VirtualBox/GuestInfo/Net/0/V4/IP
+#### Copying the public key to each server you want to access to
 
 ```bash
-
-vboxmanage list runningvms # display information about the running VMs
-
-vboxmanage guestproperty enumerate <managed-node-1-name> | grep /VirtualBox/GuestInfo/Net/1/V4/IP
-
-vboxmanage guestproperty enumerate <managed-node-2-name> | grep /VirtualBox/GuestInfo/Net/1/V4/IP
-
-vboxmanage guestproperty enumerate <managed-node-3-name> | grep /VirtualBox/GuestInfo/Net/1/V4/IP
-
-
+ssh-copy-id -i ~/.ssh/id_ed25519.pub <managed-node-1-IP>
 ```
 
-ping the IP addresses to check they repond
-
 ```bash
-ping <managed-node-1-IP>
-
-ping <managed-node-2-IP>
-
-ping <managed-node-3-IP>
+ssh-copy-id -i ~/.ssh/id_ed25519.pub <managed-node-2-IP>
 ```
 
-
-copy the public key to each server you want to access to
 ```bash
-ssh-copy-id -i ~/.ssh/id_ed25519.pub <server-ip-address>
+ssh-copy-id -i ~/.ssh/id_ed25519.pub <managed-node-3-IP>
 ```
 
 🥳 IT IS NOW POSSIBLE TO CONNECT TO SERVERS FROM CONTROL NODE WITH SSH !!!!!
@@ -73,8 +66,9 @@ No need to have OpenSSH installed on the workstation == control node (just SSH c
 
 
 
+## 🅰️🔑 Set the Ansible key
 
-On the control node
+### Run the following on the control node
 
 Make sure to type a different type from those previously typed for SSH key
 Don't create a passphrase
@@ -82,10 +76,21 @@ Don't create a passphrase
 ssh-keygen -t ed25519 -C "ansible"
 ```
 
-Add the ansible key to all the 3 servers with ssh-copy-id command like higher in this file
+Copy the ansible key to all the 3 servers with ssh-copy-id command like higher in this file
+```bash
+ssh-copy-id -i ~/.ssh/ansible.pub <managed-node-1-IP>
+```
 
+```bash
+ssh-copy-id -i ~/.ssh/ansible.pub <managed-node-2-IP>
+```
 
-Connect to each server with SSH and run the following to check the presence of the 2 keys
+```bash
+ssh-copy-id -i ~/.ssh/ansible.pub <managed-node-3-IP>
+```
+At each copy command, the passphrase of the SSH key is to be asked for
+
+Connect to each server with SSH and run the following to check the presence of the 2 keys with the command below
 ```bash
 cat .ssh/authoriwed_keys
 ```
@@ -101,21 +106,27 @@ ssh -i ~/.ssh/ansible <managed-node-2-IP>
 ssh -i ~/.ssh/ansible <managed-node-3-IP>
 ```
 
-Install Ansible
+## 🅰️ Install Ansible and do first checks
 
-proceed installation
+### Proceed installation
 
-Arch Linux
-
-pacman -S ansible
-
-check success of installation
-
-ansible --version
-
-Run the playbook
+#### Arch Linux
 ```bash
-ansible-playbook --ask-become-pass install_apache.yml
+pacman -S ansible
 ```
 
+### check success of installation
+```bash
+ansible --version
+```
 
+### create file inventory and add in it the IPs of the servers we want to manage
+```bash
+nano inventory
+```
+
+### check success of use of Ansible
+
+```bash
+ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+```
