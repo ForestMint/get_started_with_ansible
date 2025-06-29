@@ -82,8 +82,18 @@ cat .ssh/id_ed25519
 set the VM's network to "Bridge adapter ; wlan0"
 it closes all the vagrant ssh connections
 
+<!--
+the following commands failed so I do it with GUI
+-->
+```bash
+VBoxManage modifyvm <managed-node-1-name> --nic1 bridged --bridgeadapter1 wlan0
 
 
+VBoxManage modifyvm <managed-node-2-name> --nic1 bridged --bridgeadapter1 wlan0
+
+
+VBoxManage modifyvm <managed-node-3-name> --nic1 bridged --bridgeadapter1 wlan0
+```
 
 
 
@@ -95,11 +105,11 @@ find the IPs in the variable /VirtualBox/GuestInfo/Net/0/V4/IP
 
 vboxmanage list runningvms # display information about the running VMs
 
-vboxmanage guestproperty enumerate <managed-node-1-name>
+vboxmanage guestproperty enumerate <managed-node-1-name> | grep /VirtualBox/GuestInfo/Net/0/V4/IP
 
-vboxmanage guestproperty enumerate <managed-node-2-name>
+vboxmanage guestproperty enumerate <managed-node-2-name> | grep /VirtualBox/GuestInfo/Net/0/V4/IP
 
-vboxmanage guestproperty enumerate <managed-node-3-name>
+vboxmanage guestproperty enumerate <managed-node-3-name> | grep /VirtualBox/GuestInfo/Net/0/V4/IP
 
 
 ```
