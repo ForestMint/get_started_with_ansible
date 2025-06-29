@@ -70,6 +70,49 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub <server-ip-address>
 
 No need to have OpenSSH installed on the workstation == control node (just SSH client is needed here, installed by default on any Linux system)
 
+
+
+
+
+On the control node
+
+Make sure to type a different type from those previously typed for SSH key
+Don't create a passphrase
+```bash
+ssh-keygen -t ed25519 -C "ansible"
+```
+
+Add the ansible key to all the 3 servers with ssh-copy-id command like higher in this file
+
+
+Connect to each server with SSH and run the following to check the presence of the 2 keys
+```bash
+cat .ssh/authoriwed_keys
+```
+
+Check the connection with ansible key to each server
+```bash
+ssh -i ~/.ssh/ansible <managed-node-1-IP>
+```
+```bash
+ssh -i ~/.ssh/ansible <managed-node-2-IP>
+```
+```bash
+ssh -i ~/.ssh/ansible <managed-node-3-IP>
+```
+
+Install Ansible
+
+proceed installation
+
+Arch Linux
+
+pacman -S ansible
+
+check success of installation
+
+ansible --version
+
 Run the playbook
 ```bash
 ansible-playbook --ask-become-pass install_apache.yml
