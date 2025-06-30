@@ -12,7 +12,7 @@
 cd managed_node_1
 vagrant up
 vagrant ssh
-(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) && (sudo usermod -aG sudo p851962)
 ```
 
 ### Node 2
@@ -21,7 +21,7 @@ vagrant ssh
 cd managed_node_2
 vagrant up
 vagrant ssh
-(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) && (sudo usermod -aG sudo p851962)
 ```
 
 ### Node 3
@@ -30,7 +30,7 @@ vagrant ssh
 cd managed_node_3
 vagrant up
 vagrant ssh
-(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) && (sudo usermod -aG sudo p851962)
 ```
 ## 🔑 Set the SSH key
 
