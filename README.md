@@ -132,7 +132,7 @@ nano inventory
 ansible all --key-file ~/.ssh/ansible -i /home/p851962/inventory -m ping
 ```
 
-### Run the playbooks
+### run the playbook
 
 ```bash
 ansible-playbook -i /home/p851962/inventory my_playbook.yml --private-key=~/.ssh/ansible -kK
