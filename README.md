@@ -12,7 +12,7 @@
 cd managed_node_1
 vagrant up
 vagrant ssh
-(sudo useradd -m p851962) && (sudo passwd p851962)
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
 ```
 
 ### Node 2
@@ -21,7 +21,7 @@ vagrant ssh
 cd managed_node_2
 vagrant up
 vagrant ssh
-(sudo useradd -m p851962) && (sudo passwd p851962)
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
 ```
 
 ### Node 3
@@ -30,7 +30,7 @@ vagrant ssh
 cd managed_node_3
 vagrant up
 vagrant ssh
-(sudo useradd -m p851962) && (sudo passwd p851962)
+(sudo apt-get install sshpass) && (sudo useradd -m p851962) && (sudo passwd p851962) 
 ```
 ## 🔑 Set the SSH key
 
@@ -113,6 +113,7 @@ ssh -i ~/.ssh/ansible <managed-node-3-IP>
 #### Arch Linux
 ```bash
 pacman -S ansible
+sudo pacman -S sshpass
 ```
 
 ### check success of installation
@@ -128,5 +129,12 @@ nano inventory
 ### check success of use of Ansible
 
 ```bash
-ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+ansible all --key-file ~/.ssh/ansible -i /home/p851962/inventory -m ping
 ```
+
+### Run the playbooks
+
+```bash
+ansible-playbook -i /home/p851962/inventory my_playbook.yml --private-key=~/.ssh/ansible -kK
+```
+the 2 passwords typed here seem not to matter
