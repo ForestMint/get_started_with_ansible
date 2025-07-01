@@ -18,9 +18,9 @@
 
 #      mode: '0644'
 
-  - name: Add p851962 to sudo group
+  - name: Add alfredo to sudo group
     user:
-      name: p851962  # Replace with the same username
+      name: alfredo  # Replace with the same username
       groups: sudo  # On Debian/Ubuntu; for CentOS/RHEL, use 'wheel'
       append: yes
 
