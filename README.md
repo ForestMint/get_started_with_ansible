@@ -8,11 +8,6 @@
 cd control node
 vagrant up
 vagrant ssh
-sudo apt install ansible -y
-ansible --version
-(sudo useradd -m alfredo) && (sudo passwd alfredo) && (sudo usermod -aG sudo alfredo)
-apt-get install sshpass
-sshpass -V
 su alfredo
 ```
 
