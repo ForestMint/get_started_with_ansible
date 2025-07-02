@@ -4,12 +4,6 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "bento/ubuntu-24.04"
   config.vm.box_version = "202502.21.0"
-  #config.vm.network :public_network, :public_network => "wlan0"
-  #config.vm.network "public_network", bridge: 'Wi-Fi (AirPort)', adapter: 2
-  #config.vm.network "public_network", bridge: 'wlan0', adapter: 1
-  #config.vm.network "public_network", ip: '192.168.1.100'
-  #config.vm.network :only, "10.11.12.13"
-
 
 
   config.vm.define "host1" do |host1|
@@ -19,13 +13,4 @@ Vagrant.configure("2") do |config|
 
 
 end
-
-
-#Vagrant::Config.run do |config|
-  # ...
-  #config.vm.network :bridged
-  #config.vm.network :hostonly, "10.11.12.13"
-#end
-
-
 

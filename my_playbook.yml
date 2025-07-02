@@ -8,20 +8,14 @@
 
   tasks:
 
-#  - name: Copy file hosts with permissions
-
-#    ansible.builtin.copy:
-
-#      src: ./hosts
-
-#      dest: /tmp/hosts_backup
-
-#      mode: '0644'
-
   - name: Add alfredo to sudo group
+
     user:
-      name: alfredo  # Replace with the same username
+
+      name: alfredo 
+
       groups: sudo  # On Debian/Ubuntu; for CentOS/RHEL, use 'wheel'
+
       append: yes
 
   - name: Add the user 'bob'
