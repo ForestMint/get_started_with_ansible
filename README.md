@@ -1,42 +1,59 @@
 # This is about the basics of Ansible
 
+## 📦 Prerequisites
+
+Have Terraform installed on your machine
+Have Vagrant installed on your machine
+
+
 ## 📦 Start and set the machines
 
-### Control node
+### Start the machines
+
+Init Terraform repository
+```bash
+terraform init
+```
+
+Execute terraform file (main.tf)
+```bash
+terraform apply
+```
+
+### Set the machines
+
+#### Control node
 
 ```bash
-cd control node
-vagrant up
+cd control_node
 vagrant ssh
 su alfredo
 ```
 
-### Managed node 1
+#### Managed node 1
 
 ```bash
 cd managed_node_1
-vagrant up
 vagrant ssh
 (sudo apt-get install sshpass) && (sudo useradd -m alfredo) && (sudo passwd alfredo) && (sudo usermod -aG sudo alfredo)
 ```
 
-### Managed node 2
+#### Managed node 2
 
 ```bash
 cd managed_node_2
-vagrant up
 vagrant ssh
 (sudo apt-get install sshpass) && (sudo useradd -m alfredo) && (sudo passwd alfredo) && (sudo usermod -aG sudo alfredo)
 ```
 
-### Managed node 3
+#### Managed node 3
 
 ```bash
 cd managed_node_3
-vagrant up
 vagrant ssh
 (sudo apt-get install sshpass) && (sudo useradd -m alfredo) && (sudo passwd alfredo) && (sudo usermod -aG sudo alfredo)
 ```
+
 ## 🔑 Set the SSH key
 
 ### Run the following on the control node
